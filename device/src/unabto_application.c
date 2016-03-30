@@ -26,6 +26,8 @@ application_event_result application_event(application_request* request, buffer_
 
             gstate = state;
 
+            if (!buffer_write_uint32(write_buffer, gstate)) return AER_REQ_RSP_TOO_LARGE;
+
             return AER_REQ_RESPONSE_READY;
         }
         // nabto_heatpump_get_temp.json
@@ -42,6 +44,8 @@ application_event_result application_event(application_request* request, buffer_
 
             gtemp = temp;
 
+            if (!buffer_write_uint32(write_buffer, gtemp)) return AER_REQ_RSP_TOO_LARGE;
+
             return AER_REQ_RESPONSE_READY;
         }
         // nabto_heatpump_get_mode.json
@@ -57,6 +61,8 @@ application_event_result application_event(application_request* request, buffer_
             if (!buffer_read_uint32(read_buffer, &mode)) return AER_REQ_TOO_SMALL;
 
             gmode = mode;
+
+            if (!buffer_write_uint32(write_buffer, gmode)) return AER_REQ_RSP_TOO_LARGE;
 
             return AER_REQ_RESPONSE_READY;
         }

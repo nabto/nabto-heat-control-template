@@ -16,6 +16,7 @@
       <parameter name="state" type="uint32"/>
     </request>
     <response format="json">
+      <parameter name="state" type="uint32"/>
     </response>
   </query>
 
@@ -32,6 +33,7 @@
       <parameter name="temp" type="uint32"/>
     </request>
     <response format="json">
+      <parameter name="temp" type="uint32"/>
     </response>
   </query>
 
@@ -48,6 +50,7 @@
       <parameter name="mode" type="uint32"/>
     </request>
     <response format="json">
+      <parameter name="mode" type="uint32"/>
     </response>
   </query>
 
