@@ -1,2 +1,3 @@
-# nabto-heat-control-template
-Nabto Heat Control Template
+# Nabto Heat Control Template
+
+A template to demonstrate Nabto.
