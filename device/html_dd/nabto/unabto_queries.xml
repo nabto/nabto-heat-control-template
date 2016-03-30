@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<unabto_queries
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://www.nabto.com/unabto/query_model.xsd">
+
+  <query name="nabto_heatpump_get_state.json" description="Get heatpump state" id="10">
+    <request>
+    </request>
+    <response format="json">
+      <parameter name="state" type="uint32"/>
+    </response>
+  </query>
+
+  <query name="nabto_heatpump_set_state.json" description="Set heatpump state" id="20">
+    <request>
+      <parameter name="state" type="uint32"/>
+    </request>
+    <response format="json">
+    </response>
+  </query>
+
+  <query name="nabto_heatpump_get_temp.json" description="Get heatpump temperature" id="30">
+    <request>
+    </request>
+    <response format="json">
+      <parameter name="temp" type="uint32"/>
+    </response>
+  </query>
+
+  <query name="nabto_heatpump_set_temp.json" description="Set heatpump temperature" id="40">
+    <request>
+      <parameter name="temp" type="uint32"/>
+    </request>
+    <response format="json">
+    </response>
+  </query>
+
+  <query name="nabto_heatpump_get_mode.json" description="Get heatpump mode" id="50">
+    <request>
+    </request>
+    <response format="json">
+      <parameter name="mode" type="uint32"/>
+    </response>
+  </query>
+
+  <query name="nabto_heatpump_set_mode.json" description="Set heatpump mode" id="60">
+    <request>
+      <parameter name="mode" type="uint32"/>
+    </request>
+    <response format="json">
+    </response>
+  </query>
+
+</unabto_queries>
