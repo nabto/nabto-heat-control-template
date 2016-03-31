@@ -44,6 +44,9 @@ git clone https://github.com/nabto/nabto-heat-control-template
 # Update the unabto submodule
 git submodule update --init
 
+# Install cmake if not already present
+sudo apt-get install cmake
+
 # Create a build directory
 mkdir build
 cd build
