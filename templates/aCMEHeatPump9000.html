@@ -1,0 +1,20 @@
+<ion-view title="ACME Heat Pump 9000" id="page1">
+    <ion-content overflow-scroll="true" padding="true" class="has-header">
+        <form class="list">
+            <ion-toggle toggle-class="" ng-checked="true" ng-model="heatPumpActive">Heat pump active</ion-toggle>
+            <button id="aCMEHeatPump9000-button2" class="button button-positive  button-block icon ion-arrow-up-b" ng-click="heatPumpUpPushed()"></button>
+            <h1 id="aCMEHeatPump9000-heading1" style="color:#000000;font-weight:lighter;text-align:center;">{{temperature}}°C</h1>
+            <button id="aCMEHeatPump9000-button4" class="button button-positive  button-block icon ion-arrow-down-b" ng-click="heatPumpDownPushed()"></button>
+            <label class="item item-select">
+                <span class="input-label">Mode</span>
+                <select>
+                    <option>Heat</option>
+                    <option>Cool</option>
+                    <option>Circulate only</option>
+                    <option>Clean</option>
+                    <option></option>
+                </select>
+            </label>
+        </form>
+    </ion-content>
+</ion-view>

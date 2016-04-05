@@ -18,11 +18,14 @@ ionic start myApp https://github.com/nabto/nabto-heat-control-template
 # Install the nabto cordova plugin
 ionic plugin add cordova-plugin-nabto
 
+# Add platforms
+ionic platform add ios android
+
 # Manually replace ios linker flags according to plugin readme using xcode
 # "-ObjC" to "-force_load $(BUILT_PRODUCTS_DIR)/libCordova.a -lstdc++".
 # Optionally raise deployment target to 8.0 or above.
 
-# Build the ios project
+# Build the project for ios or android
 ionic build ios
 
 # Open xcode and run or run the simulator directly from the command line
