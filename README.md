@@ -25,6 +25,8 @@ ionic platform add ios android
 # "-ObjC" to "-force_load $(BUILT_PRODUCTS_DIR)/libCordova.a -lstdc++".
 # Optionally raise deployment target to 8.0 or above.
 
+# Set your nabto device id in 'www/js/app.js'
+
 # Build the project for ios or android
 ionic build ios
 

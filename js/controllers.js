@@ -1,41 +1,78 @@
 angular.module('app.controllers', [])
 
-.controller('aCMEHeatPump9000Ctrl', function($scope) {
+.controller('aCMEHeatPump9000Ctrl', function($scope, $ionicPlatform) {
 
-  var baseUrl = 'nabto://mr.demo.nab.to/';
-
-  $scope.temperature = 0;
+  /* Change this to your device ID */
+  var device = 'nabto://heatpump.demo.nab.to/';
 
   function fetch(request, cb) {
-    window.nabto.fetchUrl(baseUrl + request, function(status, result) {
+    console.log('Fetch: ' + request);
+
+    window.nabto.fetchUrl(device + request, function(status, result) {
       if (!status && result.response) {
-        cb(result.response);
+        return cb(result.response);
       }
-      else {
-        console.error("Something went wrong");
-      }
+      console.error("Something went wrong");
     });
   }
 
+  function updateTemperature() {
+    fetch('nabto_heatpump_get_temp.json?', function(response) {
+      $scope.temperature = response.temp;
+      $scope.$digest();
+    });
+  }
+
+  function updateState() {
+    fetch('nabto_heatpump_get_state.json?', function(reponse) {
+      $scope.heatState = reponse.state;
+      $scope.$digest();
+    });
+  }
+
+  function updateMode() {
+    fetch('nabto_heatpump_get_mode.json?', function(response) {
+      $scope.heatMode = response.mode.toString();
+      $scope.$digest();
+    });
+  }
+
+  $ionicPlatform.ready(function() {
+    updateTemperature();
+    updateState();
+    updateMode();
+  });
+
   $scope.heatPumpUpPushed = function() {
-    console.log('UP');
     var newTemp = $scope.temperature + 1;
     fetch('nabto_heatpump_set_temp.json?temp=' + newTemp, function(response) {
       $scope.temperature = response.temp;
+      $scope.$digest();
     });
   };
 
   $scope.heatPumpDownPushed = function() {
-    console.log('DOWN');
     var newTemp = $scope.temperature - 1;
     fetch('nabto_heatpump_set_temp.json?temp=' + newTemp, function(response) {
       $scope.temperature = response.temp;
+      $scope.$digest();
     });
   };
 
-  $scope.$watch('heatPumpActive', function(newValue, oldValue) {
-    console.log('CHANGED: ' + newValue);
-  });
+  $scope.heatStateChanged = function() {
+    var newState = $scope.heatState ? 0 : 1;
+    fetch('nabto_heatpump_set_state.json?state=' + newState, function(response) {
+      $scope.heatState = response.state;
+      $scope.$digest();
+    });
+  };
+
+  $scope.heatModeChanged = function(newMode) {
+    fetch('nabto_heatpump_set_mode.json?mode=' + newMode, function(response) {
+      $scope.heatMode = response.mode;
+      $scope.$digest();
+    });
+  };
 })
 
 .controller('cloudCtrl', function($scope) {
