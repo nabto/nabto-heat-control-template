@@ -46,7 +46,7 @@ ssh pi@raspberry
 # Fetch the template repo
 git clone https://github.com/nabto/nabto-heat-control-template
 
-# Update the unabto submodule
+# Fetch the unabto submodule
 git submodule update --init
 
 # Install cmake if not already present
@@ -57,7 +57,7 @@ mkdir build
 cd build
 
 # Build the unabto demo
-cmake ../nabto-heat-control/device
+cmake ../device
 make
 
 # Run the demo with a device ID and key (https://portal.nabto.com/)

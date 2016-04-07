@@ -3,7 +3,7 @@ angular.module('app.controllers', [])
 .controller('aCMEHeatPump9000Ctrl', function($scope, $ionicPlatform) {
 
   /* Change this to your device ID */
-  var device = 'nabto://heatpump.demo.nab.to/';
+  var device = 'nabto://heat.demo.nab.to/';
 
   function fetch(request, cb) {
     console.log('Fetch: ' + request);
