@@ -15,6 +15,11 @@ int main(int argc, char* argv[])
 {
     nabto_main_setup* nms = unabto_init_context();
 
+    #ifdef __arm__
+        // Disable the default mmc0 led trigger on Raspberry Pi
+        system("echo none | sudo tee /sys/class/leds/led0/trigger");
+    #endif
+
     if (!check_args(argc, argv, nms)) {
         return 1;
     }

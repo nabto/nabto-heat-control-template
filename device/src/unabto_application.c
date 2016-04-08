@@ -7,6 +7,22 @@
 
 uint32_t gstate = 0, gtemp = 0, gmode = 0;
 
+uint32_t setState(uint32_t state) {
+    gstate = state;
+
+#ifdef __arm__
+    // Toggle ACT LED on Raspberry Pi
+    if (state) {
+        system("echo 1 | sudo tee /sys/class/leds/led0/brightness");
+    }
+    else {
+        system("echo 0 | sudo tee /sys/class/leds/led0/brightness");
+    }
+#endif
+
+    return state;
+}
+
 application_event_result application_event(application_request* request, buffer_read_t* read_buffer, buffer_write_t* write_buffer) {
 
     NABTO_LOG_INFO(("Nabto application_event: %u", request->queryId));
@@ -24,9 +40,9 @@ application_event_result application_event(application_request* request, buffer_
 
             if (!buffer_read_uint32(read_buffer, &state)) return AER_REQ_TOO_SMALL;
 
-            gstate = state;
+            state = setState(state);
 
-            if (!buffer_write_uint32(write_buffer, gstate)) return AER_REQ_RSP_TOO_LARGE;
+            if (!buffer_write_uint32(write_buffer, state)) return AER_REQ_RSP_TOO_LARGE;
 
             return AER_REQ_RESPONSE_READY;
         }
