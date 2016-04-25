@@ -48,10 +48,7 @@ Building and running:
 ssh pi@raspberry
 
 # Fetch the template repo
-git clone https://github.com/nabto/nabto-heat-control-template
-
-# Fetch the unabto submodule
-git submodule update --init
+git clone --recursive https://github.com/nabto/nabto-heat-control-template
 
 # Install cmake if not already present
 sudo apt-get install cmake
