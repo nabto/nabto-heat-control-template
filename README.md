@@ -1,6 +1,6 @@
 # Nabto Heat Control Template
 
-An [ionic](http://ionic.com/) template and uNabto device demonstrating Nabto communication.
+A [ionic](http://ionic.com/) template and uNabto device demonstrating Nabto communication.
 
 <p align="center">
 <img src="images/ios-preview.png" alt="ios-preview" width="230">
