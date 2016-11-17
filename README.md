@@ -64,3 +64,5 @@ make
 # Run the demo with a device ID and key (https://portal.nabto.com/)
 ./nabto-heat-control -d <ID> -s -k <KEY>
 ```
+
+
